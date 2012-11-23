@@ -1,0 +1,104 @@
+<html lang='ja'>
+<head>
+    <title>WE WILL CAPOEIRA YOU</title>
+    <meta charset='UTF-8'>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <link href='//fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Meddon' rel='stylesheet' type='text/css'>
+    <script src="design.js"></script>
+    <script src="click.js"></script>
+    <script src="audio.js"></script>
+    <script>
+//        var socket = io.connect('http://localhost:3000/');
+//            socket.on('resDisply', function (data) {
+//            console.log(data);
+//            socket.emit('my other event', { my:'data' });
+//        });
+
+        jQuery(function () {
+            jQuery(':submit').hover(function () {
+                jQuery(this).animate({
+                    opacity:.5
+                }, {
+                }, {
+                    duration:'3000',
+                    queue:false,
+                    easing:'easeInOutBounce'
+                })
+            }, function () {
+                jQuery(this).animate({
+                    opacity:1
+                }, {
+                    duration:'fast',
+                    queue:false,
+                    easing:'easeInOutBounce'
+                })
+            });
+            jQuery('div#wrapper').css({'min-height':jQuery(window).height()});
+            jQuery('h1').css({'margin-top':jQuery(window).height() * .3});
+
+        });
+    </script>
+</head>
+<body style="margin:0;padding:0">
+
+<div id="wrapper" style="
+display: block; margin: 0 auto; background-color: #333; overflow: auto;
+text-align: center;
+/* IE10 Consumer Preview */
+background-image: -ms-linear-gradient(top, #333333 0%, #222222 100%);
+
+/* Mozilla Firefox */
+background-image: -moz-linear-gradient(top, #333333 0%, #222222 100%);
+
+/* Opera */
+background-image: -o-linear-gradient(top, #333333 0%, #222222 100%);
+
+/* Webkit (Safari/Chrome 10) */
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #333333), color-stop(1, #222222));
+
+/* Webkit (Chrome 11+) */
+background-image: -webkit-linear-gradient(top, #333333 0%, #222222 100%);
+
+/* W3C Markup, IE10 Release Preview */
+background-image: linear-gradient(to bottom, #333333 0%, #222222 100%);
+">
+    <div style="position:absolute; top:0px; right:0px; width:115px">
+        <iframe src="http://nodeknockout.com/iframe/coronet" frameborder="0" scrolling="no" allowtransparency="true"
+                width="115" height="25"></iframe>
+    </div>
+    <h1 style="
+	font-family: 'Russo One', Arial, serif; font-weight: 400;
+	color: #ccc;
+	font-size: 62px;
+	padding-bottom: 6px;
+	margin-bottom: 6px;
+	text-shadow: 1px 1px 2px #000;
+">WE WILL CAPOEIRA YOU</h1>
+
+    <p style="
+	font-family: 'Meddon', cursive;
+	color: #ccc;
+	font-size: 18px;
+	text-shadow: 1px 1px 2px #000;
+">Please make sure your volume<br>
+        <span style="font-size:12px">※音声に注意してください</span></p>
+
+    <form method="POST" action="index2.html">
+        <input type="submit" value="No" style="
+    border: 1px solid #222;
+    padding: 3px 20px;
+    color: #222;
+    cursor: pointer;
+    background: #666;
+    border-radius: 3px;
+    font-size: 0.8em;
+    width: 130px;
+    -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,.1);
+	-moz-box-shadow: 1px 1px 2px rgba(0,0,0,.1)">
+    </form>
+</div>
+</body>
+</html>
