@@ -132,7 +132,7 @@ io.sockets.on('connection', function (socket) {
                 socket.broadcast.emit('resSoundEffect', { effect:'se05' });
                 break;
             default :
-                break;
+                break;         canvasOnClick
         }
     });
 
