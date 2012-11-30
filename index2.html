@@ -30,6 +30,7 @@ socket.on('refreshScreen', function (response) {
     fade();
 	reflexiveToggle(0, response.playerNum * 3);
 });
+
 socket.on('resSoundEffect', function (res) {
     soundList[res.effect].play();
     soundList[res.effect] = new Audio(soundList[res.effect].src);

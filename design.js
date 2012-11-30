@@ -7,13 +7,16 @@
  * todo http://cou929.nu/data/google_javascript_style_guide/
  */
 
+//todo refactor
 function readySceneElements(playerNum) {
-	"use strict";
+    /* refresh */
+	jQuery('div[class ^= \'scene\']').remove();
+
 	var i, revNum, divNum = 1;
 	switch (playerNum) {
 		case 1:
 			revNum = 3;
-			var btnAreaDiv = new Array(revNum);
+			btnAreaDiv = new Array(revNum);
 			for (i = 1; i < revNum; i++) {
 				btnAreaDiv[i] = document.createElement('div');
 				btnAreaDiv[i].id = 'btnArea' + i;
@@ -30,7 +33,7 @@ function readySceneElements(playerNum) {
 			break;
 		case 2:
 			revNum = 7;
-			var btnAreaDiv = new Array(revNum);
+			btnAreaDiv = new Array(revNum);
 			for (i = 1; i < revNum; i++) {
 				jQuery('#btnArea0' + i).remove();
 				btnAreaDiv[i] = document.createElement('div');
@@ -49,6 +52,25 @@ function readySceneElements(playerNum) {
 		case 3:
 			windowHeight = windowHeight * 0.7;
 			revNum = 10;
+			btnAreaDiv = new Array(revNum);
+			for (i = 1; i < revNum; i++) {
+				jQuery('#btnArea0' + i).remove();
+				btnAreaDiv[i] = document.createElement('div');
+				btnAreaDiv[i].id = 'btnArea' + i;
+				btnAreaDiv[i].className = 'scene' + playerNum;
+				if (i % 3 == 0 && i != revNum) {
+					divNum++;
+					btnAreaDiv[divNum].appendChild(canvasBtn(i));
+					divNum++;
+				} else if (i % 3 !== 0 && i !== revNum) {
+					btnAreaDiv[divNum].appendChild(canvasBtn(i));
+				}
+				jQuery('div#wrapper').append(btnAreaDiv[i]);
+			}
+			break;
+		case 4:
+			windowHeight = windowHeight * 0.6;
+			revNum = 13;
 			var btnAreaDiv = new Array(revNum);
 			for (i = 1; i < revNum; i++) {
 				jQuery('#btnArea0' + i).remove();
@@ -85,7 +107,6 @@ function designElements() {
 	});
 }
 
-// todo  if player 3
 function canvasBtn(size) {
 //	console.log(size);
 //	console.log(cubeHeight(size));
@@ -133,7 +154,7 @@ function canvasOnClick(event, num) {
 	}
 }
 
-
+//todo update color engine
 function randomRGB() {
 	var red = Math.ceil(Math.random() * 255);
 	var green = Math.ceil(Math.random() * 255);
@@ -297,6 +318,5 @@ function reflexiveToggle(current, maxNum) {
 		jQuery(targetId).toggle('fast', function () {
 			reflexiveToggle(current, maxNum);
 		});
-
 	}
 }
