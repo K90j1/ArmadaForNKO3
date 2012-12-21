@@ -1,3 +1,10 @@
+/**
+ * Package Armada for NKO 3
+ * Licensed under the MIT licenses.
+ * Copyright 2012 Coronet Internet Service
+ * URL: http://blog.coronet-internet.com
+ */
+
 var app = require('http').createServer(handler)
     , io = require('socket.io').listen(app)
     , fs = require('fs')
@@ -93,7 +100,6 @@ function handler(req, res) {
             res.end(clickJs, 'utf8');
             break;
     }
-
 }
 
 /* ★・・・・・・★・・・・・・★・・・・・・★・・・・・・★・・・・・・
@@ -114,22 +120,22 @@ io.sockets.on('connection', function (socket) {
 //        console.log(code);
         switch (code) {
             case 37 :
-                socket.emit('resSoundEffect', { effect:'se01' });
-                socket.broadcast.emit('resSoundEffect', { effect:'se01' });
-                socket.emit('resSoundEffect', { effect:'se04' });
-                socket.broadcast.emit('resSoundEffect', { effect:'se04' });
+                socket.emit('resSoundEffect', { effect:'se1' });
+                socket.broadcast.emit('resSoundEffect', { effect:'se1' });
+                socket.emit('resSoundEffect', { effect:'se4' });
+                socket.broadcast.emit('resSoundEffect', { effect:'se4' });
                 break;
             case 38 :
-                socket.emit('resSoundEffect', { effect:'se03' });
-                socket.broadcast.emit('resSoundEffect', { effect:'se03' });
-                socket.emit('resSoundEffect', { effect:'se06' });
-                socket.broadcast.emit('resSoundEffect', { effect:'se06' });
+                socket.emit('resSoundEffect', { effect:'se3' });
+                socket.broadcast.emit('resSoundEffect', { effect:'se3' });
+                socket.emit('resSoundEffect', { effect:'se6' });
+                socket.broadcast.emit('resSoundEffect', { effect:'se6' });
                 break;
             case 39 :
-                socket.emit('resSoundEffect', { effect:'se02' });
-                socket.broadcast.emit('resSoundEffect', { effect:'se02' });
-                socket.emit('resSoundEffect', { effect:'se05' });
-                socket.broadcast.emit('resSoundEffect', { effect:'se05' });
+                socket.emit('resSoundEffect', { effect:'se2' });
+                socket.broadcast.emit('resSoundEffect', { effect:'se2' });
+                socket.emit('resSoundEffect', { effect:'se5' });
+                socket.broadcast.emit('resSoundEffect', { effect:'se5' });
                 break;
             default :
                 break;
@@ -138,26 +144,29 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('disconnect', function () {
 	    count = count-1;
-//        logging(socket.id);
+//        console.log(socket.id);
+        logging(socket.id);
     });
-//    logging(socket.id);
+//    console.log(socket.id);
+    logging(socket.id);
 });
 
 
 
 function logging(socketId) {
     var now = Math.round(new Date().getTime() / 1000);
-    var http = require('http');
-    var logApi = http.get(
-        {
-            'host':'coronet-internet.com',
-            'port':80,
-            'path':'/hackathone/' + socketId + '/' + now + '/log.html'
-        },
-        function (res) {
-        }
-    );
-    logApi.on('error', function (e) {
+    console.log(socketId + '/' + now);
+//    var http = require('http');
+//    var logApi = http.get(
+//        {
+//            'host':'coronet-internet.com',
+//            'port':80,
+//            'path':'/hackathone/' + socketId + '/' + now + '/log.html'
+//        },
+//        function (res) {
+//        }
+//    );
+//    logApi.on('error', function (e) {
 //        console.log(e);
-    })
+//    })
 }

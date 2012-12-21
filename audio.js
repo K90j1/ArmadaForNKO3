@@ -1,9 +1,11 @@
 /**
- * Created with JetBrains WebStorm.
- * User: bookair
+ * Package Armada for NKO 3
  * Date: 11/10/12
  * Time: 10:06 AM
- * To change this template use File | Settings | File Templates.
+ * Licensed under the MIT licenses.
+ * Copyright 2012 Coronet Internet Service
+ * URL: http://blog.coronet-internet.com
+ * todo for iPhone
  */
 
 function extension() {
@@ -25,8 +27,14 @@ var soundList = {
     'se1':new Audio('sound/se1.' + extension()),
     'se2':new Audio('sound/se2.' + extension()),
     'se3':new Audio('sound/se3.' + extension()),
-    'se4':new Audio('sound/se4.' + extension()),
-    'se5':new Audio('sound/se5.' + extension()),
-    'se6':new Audio('sound/se6.' + extension())
+    'se4':new Audio('sound/se1.' + extension()),
+    'se5':new Audio('sound/se2.' + extension()),
+    'se6':new Audio('sound/se3.' + extension()),
+    'se7':new Audio('sound/se1.' + extension()),
+    'se8':new Audio('sound/se2.' + extension()),
+    'se9':new Audio('sound/se3.' + extension()),
+    'se10':new Audio('sound/se1.' + extension()),
+    'se11':new Audio('sound/se2.' + extension()),
+    'se12':new Audio('sound/se3.' + extension())
 };
 
