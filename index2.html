@@ -15,6 +15,11 @@
 // ★・・・・・・★・・・・・・★・・・・・・★・・・・・・★・・・・・・
 // Catch event:
 // ★・・・・・・★・・・・・・★・・・・・・★・・・・・・★・・・・・・
+var strUA = '';
+if(navigator.userAgent.match(/(iPhone|iPod|iPad)/i)){
+	strUA = 'iOS';
+}
+console.log(navigator.userAgent);
 var windowHeight = jQuery(window).height();
 var socket = io.connect('http://192.168.0.3:3000/');
 socket.on('connection', function (response) {
@@ -32,8 +37,8 @@ socket.on('refreshScreen', function (response) {
 });
 
 socket.on('resSoundEffect', function (res) {
-    soundList[res.effect].play();
-    soundList[res.effect] = new Audio(soundList[res.effect].src);
+	soundList[res.effect].play();
+	soundList[res.effect] = new Audio(soundList[res.effect].src);
     clickMotion(res.effect);
 });
 </script>

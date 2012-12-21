@@ -15,30 +15,17 @@
  * @return void
  */
 function readyElements() {
-    var wrapperDiv = document.createElement('div');
-    wrapperDiv.id = 'wrapper';
-    document.body.appendChild(wrapperDiv);
-
-    var sideBoxDiv = document.createElement('div');
-    sideBoxDiv.id = 'sideBox';
-    jQuery('div#wrapper').append(sideBoxDiv);
-
-    var titleH1 = document.createElement('h1');
-    titleH1.id = 'title';
-    jQuery('div#sideBox').append(titleH1);
-
-    var descriptionP = document.createElement('p');
-    descriptionP.id = 'description';
-    jQuery('div#sideBox').append(descriptionP);
-
-    var copyP = document.createElement('p');
-    copyP.id = 'copy';
-    jQuery('div#sideBox').append(copyP);
-
-    jQuery('#description').html('Atabaque - left<br>Berimbau - up<br>Atabaque- right');
-    jQuery('#title').html('WE WILL CAPO<br>EIRA YOU');
-    jQuery('#copy').html('© TEAM Coronet Internet Service.');
-
+    jQuery('<div>').attr('id', 'wrapper').appendTo('body');
+    jQuery('<div>').attr('id', 'sideBox').appendTo('div#wrapper');
+    jQuery('<h1>').attr('id', 'title')
+        .html('WE WILL CAPO<br>EIRA YOU')
+        .appendTo('div#sideBox');
+    jQuery('<p>').attr('id', 'description')
+        .html('Atabaque - left<br>Berimbau - up<br>Atabaque- right')
+        .appendTo('div#sideBox');
+    jQuery('<p>').attr('id', 'copy')
+        .html('© TEAM Coronet Internet Service.')
+        .appendTo('div#sideBox');
     jQuery('body').css({
         'padding':'0px',
         'margin':'0px',
@@ -58,7 +45,7 @@ function readyElements() {
         'float':'left',
         'height':windowHeight,
         'margin-right':'10px',
-        'background-color':'#1a1a1a',
+        'background-color':'#1f1f1f',
         'border-right':'1px solid rgba(0,0,0,.5)',
         '-webkit-box-shadow':'1px 1px 2px rgba(255,255,255,.1)',
         '-moz-box-shadow':'1px 1px 2px rgba(255,255,255,.1)',
@@ -69,10 +56,10 @@ function readyElements() {
     });
 
     jQuery('#description').css({
-        'font-size':'18px',
-        'text-shadow':'1px 1px 0px #111'
+        'font-size':'18px'
     });
     jQuery('#title').css({
+        'color':'#000',
         'text-shadow':'1px 1px 0px #111',
         'font-size':'62px',
         'font-family':'serif',
@@ -86,7 +73,7 @@ function readyElements() {
     jQuery('#copy').css({
         'font-size':'10px',
         'text-shadow':'1px 1px 0px #111',
-        'color':'#333',
+        'color':'#222',
         'position':'absolute',
         'bottom':'0px',
         'left':'10px',
@@ -115,12 +102,11 @@ function readySceneElements(playerNum) {
 			revNum = 3;
 			btnAreaDiv = new Array(revNum);
 			for (i = 1; i < revNum; i++) {
-				btnAreaDiv[i] = document.createElement('div');
-				btnAreaDiv[i].id = 'btnArea' + i;
+                btnAreaDiv[i] = document.createElement('div');
+                btnAreaDiv[i].id = 'btnArea' + i;
 				btnAreaDiv[i].className = 'scene' + playerNum;
-
 				if (i % 2 == 0 && i != revNum) {
-					btnAreaDiv[i].appendChild(canvasBtn(i + 1));
+                    btnAreaDiv[i].appendChild(canvasBtn(i + 1));
 				} else if (i % 2 != 0 && i != revNum) {
 					btnAreaDiv[i].appendChild(canvasBtn(i));
 					btnAreaDiv[i].appendChild(canvasBtn(i + 1));
@@ -203,7 +189,7 @@ function readySceneElements(playerNum) {
                 jQuery('div#wrapper').append(btnAreaDiv[i]);
             }
             break;
-        case 6:
+        default :
             windowHeight = windowHeight * 0.6;
             revNum = 13;
             var btnAreaDiv = new Array(revNum);
@@ -282,6 +268,7 @@ function canvasOnClick(event, num) {
         cell.vertical > vertical &&
         cell.vertical < vertical + cubeHeight
         ) {
+        playSound();
         socket.emit('soundEffect', { effect:targetSe});
     }
 }
@@ -330,6 +317,7 @@ function randomRGB() {
 	var red = Math.ceil(Math.random() * 255);
 	var green = Math.ceil(Math.random() * 255);
 	var blue = Math.ceil(Math.random() * 255);
+    console.log('rgba(' + red + ',' + green + ',' + blue + ', 1)');
 	return  'rgba(' + red + ',' + green + ',' + blue + ', 1)';
 }
 
@@ -358,4 +346,12 @@ function cubeHeight(number) {
 	} else {
 		return windowHeight / 2;
 	}
+}
+
+function playSound(){
+    var url = "./sound/se1.mp3";
+    var audioObj = new Audio(url);
+    audioObj.load();
+    audioObj.play(url);
+
 }

@@ -9,7 +9,7 @@
 
 function clickMotion(effect) {
     var targetId = 'canvas#' + effect;
-    console.log(targetId);
+//    console.log(targetId);
     jQuery(targetId).effect('bounce', {direction:'down', times:3}, 300);
 }
 

@@ -14,13 +14,15 @@ app.listen(3000);
 var count = 0;
 
 function readSoundFile(requestString, extension){
-	if(requestString.search('bgm') > 0){
+    console.log('requestString ' + requestString);
+
+    if(requestString.search('bgm') > 0){
 //		console.log('requestString' + requestString);
 		var readBgm = '.' + requestString;
 		return fs.readFileSync(readBgm);
 	}
-	var targetNum = requestString.match(/[0-9]+/g);
-//	console.log('reday targetNum ' + targetNum);
+	var targetNum = requestString.match(/[0-9]+(?=\.)/g);
+	console.log('reday targetNum ' + targetNum);
 	if(targetNum > 3){
 		var subtraction = Math.floor(targetNum / 3) * 3;
 //		console.log('subtraction ' + subtraction);

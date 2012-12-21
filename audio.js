@@ -5,7 +5,7 @@
  * Licensed under the MIT licenses.
  * Copyright 2012 Coronet Internet Service
  * URL: http://blog.coronet-internet.com
- * todo for iPhone
+ * todo for iPhone, safari
  */
 
 function extension() {
